@@ -7,8 +7,24 @@ You can now press a simulate a keypress from Rust!
 ```Rust
 extern crate rsbot;
 
-let display = rsbot::open_display(None);
-rsbot::push_key(display, "a");
+fn main() {
+	std::thread::sleep(std::time::Duration::from_secs(1));
+	let display = rsbot::open_display(None);
+
+	rsbot::type_keys(display, "hello");
+}
+```
+Or even move you mouse!  
+```Rust
+extern crate rsbot;
+
+fn main() {
+	let display = rsbot::open_display(None);
+	let root = rsbot::root_window(display, 0);
+
+	rsbot::set_mouse_pos(display, root, 0, 0); // Absolutely positioned
+	rsbot::move_mouse(display, 50, 50);        // Relatively positioned
+}
 ```
 
 With a lot of room for improvment!  
