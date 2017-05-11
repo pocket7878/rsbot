@@ -1,9 +1,9 @@
 # rsbot
 
-With a bunch of help from my buddy [@tbodt](https://github.com/tbodt),  
-I bound a few functions from the X11 C library to Rust!
+With a bunch of help from my buddy [@tbodt](https://github.com/tbodt), I present you...  
+Rsbot!
 
-You can now press a simulate a keypress from Rust!  
+You can now press a simulate a keypresses from Rust!
 ```Rust
 extern crate rsbot;
 
@@ -14,7 +14,7 @@ fn main() {
 	bot.type_keys("hello");
 }
 ```
-Or even move you mouse!  
+Or even move your mouse!  
 ```Rust
 extern crate rsbot;
 
@@ -36,12 +36,12 @@ It's such a tedious task.
 I also know that I wouldn't be able to make it cross platform.
 
 However, I honestly believe that with your help, we can do that.  
-Make pull requests! File issues! We can do this!
+**Make pull requests! File issues! We can do this!**
 
 ## Requirements
 
 For now, only Linux with X11 is supported.  
-I have no Windows machine.
+*I have no Windows machine.*
 
 However, I appreciate pull requests.
 
