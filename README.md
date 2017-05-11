@@ -5,8 +5,10 @@ I bound a few functions from the X11 C library to Rust!
 
 You can now press a simulate a keypress from Rust!  
 ```Rust
-let display = open_display(None);
-self::key::push_key(display, "a");
+extern crate rsbot;
+
+let display = rsbot::open_display(None);
+rsbot::push_key(display, "a");
 ```
 
 With a lot of room for improvment!  
