@@ -1,9 +1,9 @@
 extern crate rsbot;
 
 fn main() {
-	let display = rsbot::open_display(None);
-	let root = rsbot::root_window(display, 0);
+	let mut bot = rsbot::new_bot();
+	// set_mouse_pos needs bot to be mutable under Linux.
 
-	rsbot::set_mouse_pos(display, root, 0, 0); // Absolutely positioned
-	rsbot::move_mouse(display, 50, 50);        // Relatively positioned
+	bot.set_mouse_pos(0, 0); // Absolutely positioned
+	bot.move_mouse(50, 50);  // Relatively positioned
 }

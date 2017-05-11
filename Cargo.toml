@@ -1,6 +1,6 @@
 [package]
 name = "rsbot"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["LEGOlord208 <LEGOlord208@krake.one>"]
 
 description = "Simulate keypresses with Rust!"

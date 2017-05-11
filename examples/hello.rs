@@ -2,7 +2,7 @@ extern crate rsbot;
 
 fn main() {
 	std::thread::sleep(std::time::Duration::from_secs(1));
-	let display = rsbot::open_display(None);
+	let bot = rsbot::new_bot();
 
-	rsbot::type_keys(display, "hello");
+	bot.type_keys("hello");
 }

@@ -1,10 +1,11 @@
 extern crate libc;
 use std;
-use Display;
+use linux::Display;
 
-type Bool = libc::c_int;
-type KeySym = *const libc::c_void;
-type KeyCode = libc::c_uint;
+type Bool    = libc::c_int;
+
+pub type KeySym  = *const libc::c_void;
+pub type KeyCode = libc::c_uint;
 
 #[link(name = "X11")]
 extern {

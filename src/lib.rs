@@ -1,38 +1,31 @@
-extern crate libc;
+mod linux;
 
-pub mod key;
-pub mod mouse;
-pub use self::key::*;
-pub use self::mouse::*;
-
-type Display = *const libc::c_void;
-type Window = libc::c_int;
-
-#[link(name = "X11")]
-extern {
-	fn XOpenDisplay(string: *const std::os::raw::c_char) -> Display;
-	fn XFlush(display: Display) -> libc::c_int;
-	fn XRootWindow(display: Display, index: libc::c_int) -> Window;
+pub fn new_bot() -> Bot {
+	Bot {
+		display:     linux::open_display(None),
+		root_window: None,
+	}
 }
 
-pub fn open_display(name: Option<&str>) -> Display {
-	unsafe {
-		match name {
-			Some(string) => {
-				XOpenDisplay(std::ffi::CString::new(string).unwrap().as_ptr())
-			},
-			None => XOpenDisplay(std::ptr::null()),
+pub struct Bot {
+	display:     linux::Display,
+	root_window: Option<linux::Window>,
+}
+impl Bot {
+	pub fn push_key(&self, string: &str) {
+		linux::push_key(self.display, string);
+	}
+	pub fn type_keys(&self, string: &str) {
+		linux::type_keys(self.display, string);
+	}
+
+	pub fn set_mouse_pos(&mut self, x: i32, y: i32) {
+		if self.root_window.is_none() {
+			self.root_window = Some(linux::root_window(self.display, 0));
 		}
+		linux::set_mouse_pos(self.display, self.root_window.unwrap(), x, y);
 	}
-}
-pub fn flush(display: Display) {
-	unsafe {
-		XFlush(display);
-	}
-}
-
-pub fn root_window(display: Display, index: i32) -> Window {
-	unsafe {
-		XRootWindow(display, index as libc::c_int)
+	pub fn move_mouse(&self, x: i32, y: i32) {
+		linux::move_mouse(self.display, x, y);
 	}
 }

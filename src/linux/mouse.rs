@@ -1,5 +1,5 @@
 extern crate libc;
-use {Display, Window};
+use linux::{Display, Window};
 
 #[link(name = "X11")]
 extern {

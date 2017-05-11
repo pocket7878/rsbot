@@ -9,9 +9,9 @@ extern crate rsbot;
 
 fn main() {
 	std::thread::sleep(std::time::Duration::from_secs(1));
-	let display = rsbot::open_display(None);
+	let bot = rsbot::new_bot();
 
-	rsbot::type_keys(display, "hello");
+	bot.type_keys("hello");
 }
 ```
 Or even move you mouse!  
@@ -19,11 +19,11 @@ Or even move you mouse!
 extern crate rsbot;
 
 fn main() {
-	let display = rsbot::open_display(None);
-	let root = rsbot::root_window(display, 0);
+	let mut bot = rsbot::new_bot();
+	// set_mouse_pos needs bot to be mutable under Linux.
 
-	rsbot::set_mouse_pos(display, root, 0, 0); // Absolutely positioned
-	rsbot::move_mouse(display, 50, 50);        // Relatively positioned
+	bot.set_mouse_pos(0, 0); // Absolutely positioned
+	bot.move_mouse(50, 50);  // Relatively positioned
 }
 ```
 
@@ -40,4 +40,8 @@ Make pull requests! File issues! We can do this!
 
 ## Requirements
 
-But yep. For now, only Linux with X11 is supported.
+For now, only Linux with X11 is supported.  
+I have no Windows machine.
+
+However, I appreciate pull requests.
+
