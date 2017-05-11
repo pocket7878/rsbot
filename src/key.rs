@@ -43,3 +43,8 @@ pub fn push_key(display: Display, string: &str) {
 	set_key_state(display, keycode, true);
 	set_key_state(display, keycode, false);
 }
+pub fn type_keys(display: Display, string: &str) {
+	for c in string.chars() {
+		push_key(display, c.to_string().as_str());
+	}
+}

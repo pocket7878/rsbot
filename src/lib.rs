@@ -30,7 +30,7 @@ pub fn flush(display: Display) {
 
 #[test]
 fn it_works() {
-	std::thread::sleep(std::time::Duration::from_secs(1));
+	std::thread::sleep(std::time::Duration::from_secs(2));
 	let display = open_display(None);
-	self::key::push_key(display, "a");
+	self::key::type_keys(display, "hello");
 }
