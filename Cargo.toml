@@ -3,5 +3,10 @@ name = "rsbot"
 version = "0.1.0"
 authors = ["LEGOlord208 <LEGOlord208@krake.one>"]
 
+description = "Simulate keypresses with Rust!"
+license = "MIT"
+license_file = "LICENSE"
+repository = "https://github.com/legolord208/rsbot"
+
 [dependencies]
 libc = "0.2"
